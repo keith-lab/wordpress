@@ -57,11 +57,16 @@ The infrastructure is comprised of:
 Database prep:
 
 Create an RDS MySQL instance 
-  * Make note of of the admin credentials (securly).  You'll need them later 
-  * Create or associate with a security group.  All wordpress related instances will need to be in the same security group.
-  * Log in with the MySQL administrator/root level account from a system permitted to connect.  (controlled by security group)
-    * Create a wordpress database 
-    * Create a wordpress user for the application to connect as
+
+Make note of of the admin credentials (securly).  You'll need them later 
+
+Create or associate with a security group.  All wordpress related instances will need to be in the same security group.
+
+Log in with the MySQL administrator/root level account from a system permitted to connect.  (controlled by security group)
+
+Create a wordpress database 
+
+Create a wordpress user for the application to connect as
 
     # #mysql -h yourhost.us-east-1.rds.amazonaws.com -u root -p
     #
