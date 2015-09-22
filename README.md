@@ -121,7 +121,7 @@ After the puppet run has finished connect to the EC2 instances public IP via HTT
 
 ## Screencast Demo
 
-https://vimeo.com/140125965
+https://www.dropbox.com/s/h2am69hl4l5ahwh/wordpress_aws_720.mov?dl=0
 
 ---
 
