@@ -25,8 +25,14 @@ firewall {
     source    => '98.110.209.133',
     action   => "accept";
 
-  "010 Allow inbound tcp port 80 for nginx":
+  "010 Allow inbound tcp port 80":
     port     => 80,
+    proto    => "tcp",
+    source    => '98.110.209.133',
+    action   => "accept";
+
+  "010 Allow inbound tcp port 443 ":
+    port     => 443,
     proto    => "tcp",
     source    => '98.110.209.133',
     action   => "accept";
@@ -81,11 +87,9 @@ docker::image { 'wordpress':
 
 docker::run { 'wordpress':
   image   => 'wordpress',
-  env => ['WORDPRESS_DB_HOST=wordpress.cv4zohn9blle.us-east-1.rds.amazonaws.com:3306', 'WORDPRESS_DB_NAME=wordpress_yb', 'WORDPRESS_DB_USER=wordpress_yb', 'WORDPRESS_DB_PASSWORD="8DDU4+bSh4efMrt7"'],
+  env => ['WORDPRESS_DB_HOST=wordpress.cv4zohn9blle.us-east-1.rds.amazonaws.com:3306', 'WORDPRESS_DB_NAME=wordpress_yb', 'WORDPRESS_DB_USER=wordpress_yb', 'WORDPRESS_DB_PASSWORD="secret_password"'],
   ports   => ['80:80','443:443'],
 }
-
-#docker run --name wordpress -e WORDPRESS_DB_HOST=wordpress.cv4zohn9blle.us-east-1.rds.amazonaws.com:3306 -e WORDPRESS_DB_NAME=wordpress_yb -e WORDPRESS_DB_USER=wordpress_yb -e WORDPRESS_DB_PASSWORD="8DDU4+bSh4efMrt7" -p 80:80 -d wordpress
 
 #
 # --- End docker configuration section ---
@@ -121,12 +125,12 @@ docker::run { 'wordpress':
     require => [ Package["facter"], File["/etc/nagios"] ],
   }
 
-  @@nagios_service { "check_nginx_status_${ec2_public_hostname}":
-    check_command       => "check_nginx_status",
+  @@nagios_service { "check_http_status_${ec2_public_hostname}":
+    check_command       => "check_http_status",
     use                 => "generic-service",
     host_name           => "$ec2_public_hostname",
     notification_period => "24x7",
-    service_description => "${ec2_public_hostname} nginx status",
+    service_description => "${ec2_public_hostname} http status",
     hostgroup_name => "default",
     require => [ Package["facter"], File["/etc/nagios"] ],
   }

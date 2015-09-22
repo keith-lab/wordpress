@@ -107,7 +107,7 @@ Supply user-data to enable hand-off to puppet on boot.
      message: Rebooting
      timeout: 30
 
-Associated with a security group that allows SSH, HTTP and HTTPS access from your location as well as access to your RDS mysql db
+Associate with a security group that allows SSH, HTTP and HTTPS access from your location as well as access to your RDS mysql db
 
 Launch the instance.
 
