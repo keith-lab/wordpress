@@ -121,6 +121,8 @@ After the puppet run has finished connect to the EC2 instances public IP via HTT
 
 ## Screencast Demo
 
+https://vimeo.com/140125965
+
 ---
 
 ## Enhancements 
