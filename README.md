@@ -141,3 +141,4 @@ Future enhancements and known limitations
 
   * Load balancing - This config could be load balanced after integration of central storage repo and load balancer
 
+  * images/modules - Some of the resources used are from upstream providers and have limitations.  i.e. wordpress image lacks docker volume support.  Should contribute improvements, or build/maintain better solution.
